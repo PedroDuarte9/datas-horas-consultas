@@ -9,11 +9,11 @@ public class Program {
     public static void main(String[] args) {
 
         //Instanciando o format para aceitar o meu formato que foi chamado
-
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 
         //Instaciando uma Data-Hora(Agora com e sem fuso horários)
-
+        System.out.println("Padrão ISO-8601");
         LocalDate d01 = LocalDate.now();
         LocalDateTime d02 = LocalDateTime.now();
         Instant d03 = Instant.now();
@@ -49,16 +49,17 @@ public class Program {
 
 
         //Transformando data hora em texto
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        LocalDate d10 = LocalDate.parse("15/09/2022", dtf);
+        LocalDate d10 = LocalDate.parse("15/09/2022", dtf1);
         LocalDateTime d11 = LocalDateTime.parse("2022-09-21T22:00:00");
 
-
-        System.out.println(d10.format(dtf));
+        System.out.println();
+        System.out.println("A partir daqui será formatado pelo programador");
+        System.out.println(d10.format(dtf1));
         System.out.println(d11.format(dtf2));
         //Outras maneira que também funciona
-        System.out.println(dtf.format(d10));
+        System.out.println(dtf1.format(d10));
         System.out.println(d10.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));//Desta maneira instaciamos apenas nesse momento, depois é descartado
 
     }
