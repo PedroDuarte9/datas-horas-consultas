@@ -74,8 +74,8 @@ public class Program {
         System.out.println("Mostrando data hora formatada com fuso horário");
         System.out.println(dtf3.format(d12));
 
-        System.out.println(dtf4.format(d13));//Falta um ajuste 
+        System.out.println(dtf4.format(d13));//Falta um ajuste
 
-
+        //Convertendo uma data-hora global em local
     }
 }
