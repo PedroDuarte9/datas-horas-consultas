@@ -3,6 +3,7 @@ package application;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class Program {
@@ -51,8 +52,15 @@ public class Program {
         //Transformando data hora em texto
         DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        DateTimeFormatter dtf3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm").withZone(ZoneId.systemDefault());//Formatando Data e Hora de acordo com o fuso horário
+        DateTimeFormatter dtf4 = DateTimeFormatter.ISO_DATE_TIME;
+
+
+
         LocalDate d10 = LocalDate.parse("15/09/2022", dtf1);
         LocalDateTime d11 = LocalDateTime.parse("2022-09-21T22:00:00");
+        Instant d12 = Instant.parse("2022-09-21T08:28:00Z");
+        LocalDate d13 = LocalDate.parse("2022-09-21T22:00:00", dtf4);
 
         System.out.println();
         System.out.println("A partir daqui será formatado pelo programador");
@@ -61,6 +69,13 @@ public class Program {
         //Outras maneira que também funciona
         System.out.println(dtf1.format(d10));
         System.out.println(d10.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));//Desta maneira instaciamos apenas nesse momento, depois é descartado
+
+        System.out.println();
+        System.out.println("Mostrando data hora formatada com fuso horário");
+        System.out.println(dtf3.format(d12));
+
+        System.out.println(dtf4.format(d13));//Falta um ajuste 
+
 
     }
 }
