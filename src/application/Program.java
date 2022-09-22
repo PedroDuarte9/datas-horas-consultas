@@ -74,8 +74,27 @@ public class Program {
         System.out.println("Mostrando data hora formatada com fuso horário");
         System.out.println(dtf3.format(d12));
 
-        System.out.println(dtf4.format(d13));//Falta um ajuste
+//        System.out.println(dtf4.format(d13));//Falta um ajuste
 
         //Convertendo uma data-hora global em local
+
+        //Calculos com data-hora
+
+        LocalDate d14 = LocalDate.parse("2022-09-15");
+        LocalDateTime d15 = LocalDateTime.parse("2022-09-21T22:00:00");
+        Instant d16 = Instant.parse("2022-09-21T08:28:00Z");
+
+        LocalDate pastWeekLocalDate = d14.minusDays(5);
+        LocalDate nextWeekLocalDate = d14.plusDays(6);
+
+        System.out.println("Past Week " + pastWeekLocalDate);
+        System.out.println("Next Week " + nextWeekLocalDate);
+
+        LocalDateTime pastWeekLocalDateTime = d15.minusDays(5);
+        LocalDateTime nextMinutesLocalDateTime = d15.plusMinutes(25);
+
+        System.out.println("Past Week Date Time " + pastWeekLocalDateTime);
+        System.out.println("Next Minute Date Time " + nextMinutesLocalDateTime);
+
     }
 }
