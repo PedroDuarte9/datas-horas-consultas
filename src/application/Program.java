@@ -1,12 +1,13 @@
 package application;
 
-import javax.crypto.spec.PSource;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class Program {
 
@@ -145,6 +146,7 @@ public class Program {
         System.out.println(" t2 dias = " + t2.toDays());
         System.out.println();
         System.out.println(" t3 dias = " + t3.toDays());
+        System.out.println();
 
 
         //Tipos Date e Calendar, que é o modelo antigo de data-hora usado pelo Java antes da versão 8, geralmente usado em sistemas legado !
@@ -171,17 +173,62 @@ public class Program {
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat sdf3 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        sdf3.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        Date y1 = sdf1.parse("22/08/2025");
+        System.out.println("----------------------------------");
+        Date y1 = sdf1.parse("22/08/2022");
         System.out.println("Data: " + y1);
 
-        Date y2 = sdf2.parse("22/08/2025 15:35:17");
+        Date y2 = sdf2.parse("22/08/2022 15:35:17");
         System.out.println("Data: " + y2);
 
+        Date y3 = Date.from(Instant.parse("2018-06-25T15:42:07Z"));//Padrão UTC definido
+        System.out.println(y3);
+        System.out.println();
+
         //Data Atual
+        System.out.println("Datas atual");
         Date x1 = new Date();
         System.out.println(x1);
 
+        Date x2 = new Date(System.currentTimeMillis());
+        System.out.println(x2);
+
+        System.out.println();
+        System.out.println("Datas a partir de 1969");
+        Date x3 = new Date(0L);
+        System.out.println(x3);
+
+        Date x4 = new Date(1000L * 60L * 60L * 5);
+        System.out.println(x4);
+
+        System.out.println("----------------------------------");
+        Date y4 = sdf3.parse("22/08/2022");
+        System.out.println("Data: " + y1);
+
+        Date y5 = sdf3.parse("22/08/2022 15:35:17");
+        System.out.println("Data: " + y2);
+
+        Date y6 = Date.from(Instant.parse("2018-06-25T15:42:07Z"));//Padrão UTC definido
+        System.out.println(y3);
+        System.out.println();
+
+        //Data Atual
+        System.out.println("Datas atual");
+        Date x5 = new Date();
+        System.out.println(x5);
+
+        Date x6 = new Date(System.currentTimeMillis());
+        System.out.println(x6);
+
+        System.out.println();
+        System.out.println("Datas a partir de 1969");
+        Date x7 = new Date(0L);
+        System.out.println(x7);
+
+        Date x8 = new Date(1000L * 60L * 60L * 5);
+        System.out.println(x8);
 
 
     }
