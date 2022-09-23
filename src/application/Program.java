@@ -6,12 +6,15 @@ import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+
+
 public class Program {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args)  {
 
         //Instanciando o format para aceitar o meu formato que foi chamado
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -176,12 +179,12 @@ public class Program {
         SimpleDateFormat sdf3 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         sdf3.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        System.out.println("----------------------------------");
-        Date y1 = sdf1.parse("22/08/2022");
-        System.out.println("Data: " + y1);
-
-        Date y2 = sdf2.parse("22/08/2022 15:35:17");
-        System.out.println("Data: " + y2);
+//        System.out.println("----------------------------------");
+//        Date y1 = sdf1.parse("22/08/2022");
+//        System.out.println("Data: " + y1);
+//
+//        Date y2 = sdf2.parse("22/08/2022 15:35:17");
+//        System.out.println("Data: " + y2);
 
         Date y3 = Date.from(Instant.parse("2018-06-25T15:42:07Z"));//Padrão UTC definido
         System.out.println(y3);
@@ -203,12 +206,12 @@ public class Program {
         Date x4 = new Date(1000L * 60L * 60L * 5);
         System.out.println(x4);
 
-        System.out.println("----------------------------------");
-        Date y4 = sdf3.parse("22/08/2022");
-        System.out.println("Data: " + y1);
-
-        Date y5 = sdf3.parse("22/08/2022 15:35:17");
-        System.out.println("Data: " + y2);
+//        System.out.println("----------------------------------");
+//        Date y4 = sdf3.parse("22/08/2022 15:00:35");
+//        System.out.println("Data: " + y1);
+//
+//        Date y5 = sdf3.parse("22/08/2022 15:35:17");
+//        System.out.println("Data: " + y2);
 
         Date y6 = Date.from(Instant.parse("2018-06-25T15:42:07Z"));//Padrão UTC definido
         System.out.println(y3);
@@ -229,6 +232,46 @@ public class Program {
 
         Date x8 = new Date(1000L * 60L * 60L * 5);
         System.out.println(x8);
+        System.out.println();
+
+        //Manipulando uma data com CALENDAR
+        //Acrescentando dia mÊs, ano, hora, minuto, segundo.
+        System.out.println("Manipulando uma data com CALENDAR\n" +
+                "Acrescentando dia mês, ano, hora, minuto, segundo.");
+        SimpleDateFormat sfd4 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");//Instanciei o SimpleDateFormat no formato que eu queria
+
+        Date d = Date.from(Instant.parse("2018-06-25T15:14:36Z")); //Chamei o método e passei a data e hora no formato ISO
+
+        System.out.println(sfd4.format(d)); //Mostrei a data e hora formatados
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        cal.add(Calendar.HOUR_OF_DAY, 4);
+        d = cal.getTime();
+
+        System.out.println(sfd4.format(d));
+        System.out.println();
+
+        //Obtendo uma unidade de tempo
+        System.out.println("Obtendo Unidade de Tempo");
+        SimpleDateFormat sdf5 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+        Date d1 = Date.from(Instant.parse("2022-06-18T18:55:03Z"));
+
+        System.out.println(sdf5.format(d1));
+
+        Calendar cale = Calendar.getInstance();
+        cale.setTime(d1);
+        int minute = cale.get(Calendar.MINUTE);
+        int mes = 1 + cale.get(Calendar.MONTH);
+
+        System.out.println(minute);
+        System.out.println(mes);
+
+
+
+
+
 
 
     }
